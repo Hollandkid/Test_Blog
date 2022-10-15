@@ -1,0 +1,67 @@
+﻿@model Post
+@{
+    ViewData["Title"] = "Post Detail";
+
+    ViewBag.Title = Model.Title;     //This is for the Search Engines... what will be used by the user
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = $"{Model.Tags?.Replace(","," ")}";
+}
+
+
+<h4>Post</h4>
+<hr />
+<div class="container">
+    <h5 class="display-4">Post Detail</h5>
+
+    @*<div class="row">
+        <div class="col"></div>
+        <div class="col-md-6">
+            <form asp-action="AddPost">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Body" class="control-label"></label>
+                    <textarea style="height:200px" asp-for="Body" class="form-control" readonly="readonly"></textarea>
+                    <span asp-validation-for="Body" class="text-danger"></span>
+                </div>
+                @if (!String.IsNullOrEmpty(Model.Image))
+                {
+                    var imagePath = $"/Image/{Model.Image}";
+                    <img src="@imagePath" alt="@Model.Title" width="500" />
+                }
+
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-success">Go Back</a>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="col"></div>
+
+    </div>*@
+
+
+
+    <div class="container">
+        <div class="post no-shadow">
+            @if (!String.IsNullOrEmpty(Model.Image))
+            {
+                var imagePath = $"/Image/{Model.Image}";
+                <img src="@imagePath" alt="@Model.Title" />
+                <span class="title">@Model.Title</span>
+            }
+        </div>
+        
+        <div class="post-body">
+            @Html.Raw(Model.Body)
+        </div>
+    </div>
+</div>
+
+

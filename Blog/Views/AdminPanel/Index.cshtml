@@ -1,0 +1,22 @@
+﻿@model List<Post>
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Admin Page</h1>
+</div>
+<div class="container">
+    <ul>
+
+        @foreach (var post in Model)
+        {
+
+            <li>
+                <a asp-controller="AdminPanel" asp-action="Details" asp-route-id="@post.Id">@post.Title</a>
+            </li>
+        }
+
+    </ul>
+
+</div>

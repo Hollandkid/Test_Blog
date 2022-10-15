@@ -1,0 +1,81 @@
+﻿@model PostViewModel
+
+@{
+    ViewData["Title"] = "Update Post";
+}
+<link href="~/lib/Trumbowyg-main/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+<h5>Update Post</h5>
+
+<hr />
+<div class="container">
+    <h5 class="display-4">Update Post</h5>
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-6">
+            <form asp-action="Update" enctype="multipart/form-data">
+                @*enctype="multipart/form-data"---  This is to allow the Form accept a file*@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tags" class="control-label"></label>
+                    <input asp-for="Tags" class="form-control" />
+                    <span asp-validation-for="Tags" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Categories" class="control-label"></label>
+
+                    <select asp-for="Categories">
+                        <option value="Travel">Travel</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Photography">Photography</option>
+                    </select>
+                    <span asp-validation-for="Categories" class="text-danger"></span>
+                </div>
+                <div class="post-body form-group">
+                    <label asp-for="Body" class="control-label"></label>
+                    <textarea asp-for="Body" id="trumbowygDemo" class="form-control"></textarea>
+                    <span asp-validation-for="Body" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CurrentImage" class="control-label"></label>
+                    <input asp-for="CurrentImage" class="form-control" />
+                    <span asp-validation-for="CurrentImage" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="col"></div>
+
+    </div>
+
+
+</div>
+
+
+
+@section scripts{
+@*To use the Trombowyg which allows you to use Editing Features*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg-main/dist/trumbowyg.min.js"></script>
+    @*This is to Use some JavaScript Class... It gives a FORM-Input Editing Features like a Notepad*@
+<script>
+    $('#trumbowygDemo').trumbowyg();
+</script>
+}

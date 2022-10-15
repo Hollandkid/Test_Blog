@@ -1,0 +1,31 @@
+﻿@model List<Post>
+@{
+    ViewData["Title"] = "Blog Website";    //This is for what will be displayed in the Page Tab...
+
+    ViewBag.Title = "Blog Website";     //This is for the Search Engines... what will be used by the user
+    ViewBag.Description = "This blog has Everything";
+    ViewBag.Keywords = "Travel blog programming travel photography";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+<div class="container">
+    @*<ul>
+
+
+        </ul>*@
+    @foreach (var post in Model)
+    {
+        var imagePath = $"/Image/{post.Image}";
+
+        <a class="post" asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+            <img src="@imagePath" alt="@post.Title" width="200" />
+            <span class="title">
+                @post.Title
+            </span>
+        </a>
+
+    }
+
+</div>
